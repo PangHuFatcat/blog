@@ -3,7 +3,7 @@ import styles from './index.module.css'
 
 const Index: NextPage = () => {
   return (
-    <div className={styles.index}>233</div>
+    <div className={styles.index}>Index</div>
   )
 }
 
