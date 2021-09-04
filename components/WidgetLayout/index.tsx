@@ -1,9 +1,9 @@
-import React from "react";
+import React, {PropsWithChildren} from "react";
 import styles from "./index.module.css";
 
 interface Props {}
 
-const WidgetLayout: React.FC<Props> = (props) => {
+const WidgetLayout = (props: PropsWithChildren<Props>) => {
   const { children } = props;
   return <div className={styles.widgetLayout}>{children}</div>;
 };
