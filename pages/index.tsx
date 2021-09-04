@@ -7,9 +7,9 @@ const Index: NextPage = () => {
   return (
     <PageLayout>
       <div className={styles.index}>
-        {[...new Array(2)].map((_, index) => (
+        {[...new Array(1)].map((_, index) => (
           <div key={index}>
-            <WidgetLayout key={index}>小部件1</WidgetLayout>
+            <WidgetLayout key={index}></WidgetLayout>
           </div>
         ))}
       </div>
