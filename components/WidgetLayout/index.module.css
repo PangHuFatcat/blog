@@ -1,6 +1,6 @@
 .widgetLayout {
-    width: 500px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     border-radius: 1em;
     background-color: #fff;
     display: flex;
@@ -8,4 +8,24 @@
     align-items: center;
     margin: 5px;
     box-shadow: 2px 4px 12px rgb(0 0 0 / 1%);
+}
+
+.widgetLayout.small {
+    width: 100px;
+    height: 100px;
+}
+
+.widgetLayout.middle {
+    width: 200px;
+    height: 200px;
+}
+
+.widgetLayout.large {
+    width: 400px;
+    height: 200px;
+}
+
+.widgetLayout.extraLarge {
+    width: 400px;
+    height: 400px;
 }
