@@ -14,7 +14,8 @@ const Index: NextPage = () => {
                 <WidgetLayout size="small">
                     <IconFont name="smiley"></IconFont>
                 </WidgetLayout>
-                <h1>他们所有的设备和仪器彷佛都是有生命的。</h1>
+                <h1>测试字体他们所有的设备和仪器彷佛都是有生命的。</h1>
+                <h1>测试字体Almost before we knew it, we had left the ground.</h1>
                 <p>测试字体测试字体测试字体测试字体测</p>
                 <p>你好你好</p>
             </div>
