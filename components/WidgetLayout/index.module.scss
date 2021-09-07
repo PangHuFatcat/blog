@@ -1,0 +1,32 @@
+.widgetLayout {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px;
+    // box-shadow: 2px 4px 12px rgb(0 0 0 / 5%);
+
+    &.default {
+        width: 100%;
+    }
+
+    &.small {
+        width: 100px;
+        height: 100px;
+    }
+
+    &.middle {
+        width: 200px;
+        height: 200px;
+    }
+
+    &.large {
+        width: 400px;
+        height: 200px;
+    }
+
+    &.extraLarge {
+        width: 400px;
+        height: 400px;
+    }
+}
