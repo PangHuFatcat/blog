@@ -12,20 +12,20 @@ const Index: NextPage = () => {
                     <WidgetLayout>自适应</WidgetLayout>
                     <div className={styles.tool}>
                         <WidgetLayout size="small">
+                            <IconFont name="document"></IconFont>
+                            <span>简历</span>
+                        </WidgetLayout>
+                        <WidgetLayout size="small">
+                            <IconFont name="system"></IconFont>
+                            <span>设置</span>
+                        </WidgetLayout>
+                        <WidgetLayout size="small">
                             <IconFont name="picture"></IconFont>
                             <span>图片</span>
                         </WidgetLayout>
                         <WidgetLayout size="small">
                             <IconFont name="send"></IconFont>
                             <span>发送</span>
-                        </WidgetLayout>
-                        <WidgetLayout size="small">
-                            <IconFont name="favorite"></IconFont>
-                            <span>简历</span>
-                        </WidgetLayout>
-                        <WidgetLayout size="small">
-                            <IconFont name="smiley"></IconFont>
-                            设置
                         </WidgetLayout>
                     </div>
                 </div>
