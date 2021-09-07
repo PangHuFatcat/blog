@@ -2,6 +2,7 @@
 /* eslint-disable */
 
 import React, { SVGAttributes, FunctionComponent } from 'react';
+import IconSearch from './IconSearch';
 import IconFilter from './IconFilter';
 import IconSystem from './IconSystem';
 import IconDocument from './IconDocument';
@@ -11,7 +12,7 @@ import IconAdjust from './IconAdjust';
 import IconSend from './IconSend';
 import IconPicture from './IconPicture';
 
-export type IconNames = 'filter' | 'system' | 'document' | 'favorite' | 'smiley' | 'adjust' | 'send' | 'picture';
+export type IconNames = 'search' | 'filter' | 'system' | 'document' | 'favorite' | 'smiley' | 'adjust' | 'send' | 'picture';
 
 interface Props extends Omit<SVGAttributes<SVGElement>, 'color'> {
   name: IconNames;
@@ -21,6 +22,8 @@ interface Props extends Omit<SVGAttributes<SVGElement>, 'color'> {
 
 const IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
   switch (name) {
+    case 'search':
+      return <IconSearch {...rest} />;
     case 'filter':
       return <IconFilter {...rest} />;
     case 'system':

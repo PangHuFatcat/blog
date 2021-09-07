@@ -8,29 +8,26 @@ const Index: NextPage = () => {
     return (
         <PageLayout>
             <div className={styles.index}>
-                <div className={styles.banner}>
-                    <WidgetLayout>自适应</WidgetLayout>
-                    <div className={styles.tool}>
-                        <WidgetLayout size="small">
-                            <IconFont name="document"></IconFont>
-                            <span>简历</span>
-                        </WidgetLayout>
-                        <WidgetLayout size="small">
-                            <IconFont name="system"></IconFont>
-                            <span>设置</span>
-                        </WidgetLayout>
-                        <WidgetLayout size="small">
-                            <IconFont name="picture"></IconFont>
-                            <span>图片</span>
-                        </WidgetLayout>
-                        <WidgetLayout size="small">
-                            <IconFont name="send"></IconFont>
-                            <span>发送</span>
-                        </WidgetLayout>
-                    </div>
+                <div className={styles.tool}>
+                    <WidgetLayout styleType="capsule" className={styles.toolItem}>
+                        <IconFont name="search" size={20} color="#444"></IconFont>
+                        <span>搜索</span>
+                    </WidgetLayout>
+                    <WidgetLayout styleType="capsule" className={styles.toolItem}>
+                        <IconFont name="document" size={20} color="#444"></IconFont>
+                        <span>简历</span>
+                    </WidgetLayout>
+                    <WidgetLayout styleType="capsule" className={styles.toolItem}>
+                        <IconFont name="picture" size={20} color="#444"></IconFont>
+                        <span>相册</span>
+                    </WidgetLayout>
+                    <WidgetLayout styleType="capsule" className={styles.toolItem}>
+                        <IconFont name="system" size={20} color="#444"></IconFont>
+                        <span>设置</span>
+                    </WidgetLayout>
                 </div>
                 <div className={styles.post}>
-                    <WidgetLayout>
+                    <WidgetLayout styleType="card">
                         <div>
                             <h1>从 iOS 14 到 Android 12，桌面小组件是怎么「文艺复兴」的</h1>
                             <p>
