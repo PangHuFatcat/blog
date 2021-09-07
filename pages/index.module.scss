@@ -1,0 +1,19 @@
+.index {
+}
+
+.tool {
+    display: grid;
+    grid-template-columns: auto 140px 140px 140px;
+    grid-template-rows: 50px;
+    gap: 10px;
+
+    .toolItem {
+        span {
+            letter-spacing: 1.2px;
+            padding-left: 4px;
+        }
+    }
+}
+.post {
+    margin-top: 10px;
+}

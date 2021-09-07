@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "gen:api": "npx iconfont-h5"
+        "gen:icon": "npx iconfont-h5"
     },
     "dependencies": {
         "classnames": "^2.3.1",
@@ -21,6 +21,7 @@
         "eslint": "7.32.0",
         "eslint-config-next": "11.1.0",
         "react-iconfont-cli": "^2.0.1",
+        "sass": "^1.39.0",
         "typescript": "4.3.5"
     }
 }

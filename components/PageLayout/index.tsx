@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import Head from 'next/head'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 
 interface Props {
     title?: string

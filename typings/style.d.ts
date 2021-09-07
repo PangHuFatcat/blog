@@ -1,5 +1,9 @@
 declare namespace Style {
     namespace Widget {
-        type size = 'small' | 'middle' | 'large' | 'extraLarge' 
+
+        type size = 'default' | 'small' | 'middle' | 'large' | 'extraLarge' 
+
+        type styleType = 'default' | 'card' | 'capsule'
+        
     }
 }
