@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "gen:api": "npx iconfont-h5"
+        "gen:icon": "npx iconfont-h5"
     },
     "dependencies": {
         "classnames": "^2.3.1",
