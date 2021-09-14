@@ -1,13 +1,18 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Image from 'next/image'
 import PageLayout from '../components/PageLayout'
 import WidgetLayout from '../components/WidgetLayout'
-import ViewrLayout from '../components/ViewrLayout'
 import IconFont from '../components/IconFont'
 import { PhotoProvider, PhotoConsumer } from 'react-photo-view'
+import DB from '../lib/mongodb'
 import styles from './index.module.scss'
 
-const Index: NextPage = () => {
+interface IndexProps {
+    isConnected: boolean
+}
+
+const Index: NextPage<IndexProps> = (props) => {
+    const { isConnected } = props
     const photoImages = [
         '/images/test/1.jpg',
         '/images/test/2.jpg',
@@ -19,6 +24,8 @@ const Index: NextPage = () => {
         '/images/test/8.jpg',
         '/images/test/9.jpg',
     ]
+
+    console.log(isConnected, 'isConnected')
     return (
         <PageLayout>
             <div className={styles.index}>
@@ -98,6 +105,20 @@ const Index: NextPage = () => {
             </div>
         </PageLayout>
     )
+}
+
+export const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
+    const client = DB
+
+    const clientConnect = await client.connect()
+
+    console.log(clientConnect, 'clientConnect<--------------------------------------------->DB')
+
+    return {
+        props: {
+            isConnected: false,
+        },
+    }
 }
 
 export default Index
