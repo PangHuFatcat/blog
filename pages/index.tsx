@@ -4,7 +4,7 @@ import PageLayout from '../components/PageLayout'
 import WidgetLayout from '../components/WidgetLayout'
 import IconFont from '../components/IconFont'
 import { PhotoProvider, PhotoConsumer } from 'react-photo-view'
-import DB from '../lib/mongodb'
+import mongodb from '../lib/mongodb'
 import styles from './index.module.scss'
 
 interface IndexProps {
@@ -24,8 +24,6 @@ const Index: NextPage<IndexProps> = (props) => {
         '/images/test/8.jpg',
         '/images/test/9.jpg',
     ]
-
-    console.log(isConnected, 'isConnected')
     return (
         <PageLayout>
             <div className={styles.index}>
@@ -108,15 +106,20 @@ const Index: NextPage<IndexProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
-    const client = DB
+    const client = await mongodb()
 
-    const clientConnect = await client.connect()
+    const database = client.db('sample_mflix')
 
-    console.log(clientConnect, 'clientConnect<--------------------------------------------->DB')
+    const movieDoc = database.collection('movies')
+
+    const movies = movieDoc.find({})
+
+    console.log(movies, 'movies')
 
     return {
         props: {
             isConnected: false,
+            movies,
         },
     }
 }

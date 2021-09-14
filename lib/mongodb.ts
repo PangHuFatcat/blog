@@ -1,47 +1,56 @@
 import { MongoClient, MongoClientOptions } from 'mongodb'
 
-class DB {
-    static client: MongoClient
+// 开发模式避免热更时候频繁连接
+async function dbDev(uri: string, options: MongoClientOptions) {
+    let client: MongoClient
 
-    static clientConnect: Promise<MongoClient>
+    // @ts-ignore
+    if (!global._mongoClientConnect) {
+        client = new MongoClient(uri, options)
+        // @ts-ignore
+        global._mongoClientConnect = client
+    } else {
+        // @ts-ignore
+        client = global._mongoClientConnect
+    }
 
-    constructor() {}
+    try {
+        await client.connect()
+    } catch (err) {
+        console.log('try.catch.dbDev.err: ', err)
+    } finally {
+        await client.close()
+    }
 
-    static connect = (): Promise<MongoClient> => {
-        if (!process.env.MONGODB_URI) {
-            throw new Error('似乎在 .env 里面没有配置 MONGODB_URI')
-        }
+    return client
+}
 
-        const options: MongoClientOptions = {}
+async function dbPrd(uri: string, options: MongoClientOptions) {
+    const client = new MongoClient(uri, options)
 
-        // 开发热更会导致重新连接, 需要关闭
-        if (process.env.NODE_ENV === 'development') {
-            // @ts-ignore
-            if (!global._mongoClientConnect) {
-                DB.client = new MongoClient(process.env.MONGODB_URI, options)
-                // @ts-ignore
-                global._mongoClientConnect = DB.client.connect()
-              }
-              console.log('开发模式获取', 'global._mongoClientConnect')
-              // @ts-ignore
-              DB.clientConnect = global._mongoClientConnect
-        } else {
-            if (!DB.client) {
-                console.log('没有DB.client: 创建')
-                DB.client = new MongoClient(process.env.MONGODB_URI, options)
-            }
-    
-            if (!DB.clientConnect) {
-                console.log('DB.clientConnect: 创建')
-                DB.clientConnect = DB.client.connect()
-            }
-        }
-        
-        console.log('已经返回 clientConnect 实例')
+    try {
+        await client.connect()
+    } catch (err) {
+        console.log('try.catch.dbPrd.err: ', err)
+    } finally {
+        await client.close()
+    }
 
-        return DB.clientConnect
-        
+    return client
+}
+
+async function db() {
+    const options: MongoClientOptions = {}
+
+    if (!process.env.MONGODB_URI) {
+        throw new Error('似乎在 .env 里面没有配置 MONGODB_URI')
+    }
+
+    if (process.env.NODE_ENV === 'development') {
+        return dbDev(process.env.MONGODB_URI, options)
+    } else {
+        return dbPrd(process.env.MONGODB_URI, options)
     }
 }
 
-export default DB
+export default db
