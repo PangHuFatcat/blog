@@ -8,11 +8,10 @@ import mongodb from '../lib/mongodb'
 import styles from './index.module.scss'
 
 interface IndexProps {
-    isConnected: boolean
+    [key: string]: any
 }
 
 const Index: NextPage<IndexProps> = (props) => {
-    const { isConnected } = props
     const photoImages = [
         '/images/test/1.jpg',
         '/images/test/2.jpg',
@@ -105,21 +104,28 @@ const Index: NextPage<IndexProps> = (props) => {
     )
 }
 
+interface Haiku {
+    title: string
+    content: string
+}
+
 export const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
     const client = await mongodb()
 
-    const database = client.db('sample_mflix')
+    const database = client.db('test_db')
 
-    const movieDoc = database.collection('movies')
+    const haiku = database.collection<Haiku>('haiku')
 
-    const movies = movieDoc.find({})
+    const result = await haiku.insertOne({
+        title: 'Record of a Shriveled Datum',
+        content: 'No bytes, no problem. Just insert a document, in MongoDB',
+    })
 
-    console.log(movies, 'movies')
+    console.log(result, 'result')
 
     return {
         props: {
-            isConnected: false,
-            movies,
+            // result,
         },
     }
 }

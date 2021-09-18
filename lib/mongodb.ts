@@ -18,8 +18,8 @@ async function dbDev(uri: string, options: MongoClientOptions) {
         await client.connect()
     } catch (err) {
         console.log('try.catch.dbDev.err: ', err)
-    } finally {
-        await client.close()
+        client.close()
+        console.log('db.close')
     }
 
     return client
@@ -32,14 +32,14 @@ async function dbPrd(uri: string, options: MongoClientOptions) {
         await client.connect()
     } catch (err) {
         console.log('try.catch.dbPrd.err: ', err)
-    } finally {
         await client.close()
+        console.log('db.close')
     }
 
     return client
 }
 
-async function db() {
+function db() {
     const options: MongoClientOptions = {}
 
     if (!process.env.MONGODB_URI) {
