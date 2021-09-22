@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from 'next'
-import PageLayout from '../components/PageLayout'
-import WidgetLayout from '../components/WidgetLayout'
-// import mongodb from '../lib/mongodb'
+import PageLayout from 'components/PageLayout'
+import WidgetLayout from 'components/WidgetLayout'
+// import mongodb from 'lib/mongodb'
 import styles from './index.module.scss'
 
 interface Post {
