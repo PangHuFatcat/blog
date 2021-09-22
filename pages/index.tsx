@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import PageLayout from '../components/PageLayout'
 import WidgetLayout from '../components/WidgetLayout'
-import mongodb from '../lib/mongodb'
+// import mongodb from '../lib/mongodb'
 import styles from './index.module.scss'
 
 interface Post {
@@ -13,7 +13,14 @@ interface IndexProps {
 }
 
 const Index: NextPage<IndexProps> = (props) => {
-    const { posts } = props
+    const {
+        posts = [
+            {
+                title: '标题',
+                content: '内容',
+            },
+        ],
+    } = props
     return (
         <PageLayout>
             <div className={styles.index}>
@@ -32,20 +39,20 @@ const Index: NextPage<IndexProps> = (props) => {
     )
 }
 
-export const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
-    const client = await mongodb()
+// export const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
+//     const client = await mongodb()
 
-    const database = client.db('test_db')
+//     const database = client.db('test_db')
 
-    const posts = database.collection<Post>('post')
+//     const posts = database.collection<Post>('post')
 
-    const postArray = await posts.find<Post>({}, { projection: { _id: 0 } }).toArray()
+//     const postArray = await posts.find<Post>({}, { projection: { _id: 0 } }).toArray()
 
-    return {
-        props: {
-            posts: postArray,
-        },
-    }
-}
+//     return {
+//         props: {
+//             posts: postArray,
+//         },
+//     }
+// }
 
 export default Index
